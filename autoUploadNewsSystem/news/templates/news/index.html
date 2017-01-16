@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% include "news/head.html" %}
+        <title>新闻系统-首页</title>
+    </head>
+    <body>
+        {% include "news/nav.html" %}
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+              <ul class="nav nav-sidebar">
+                <li class="active"><a href="{% url 'news:index' %}">首页<span class="sr-only">(current)</span></a></li>
+                <li><a href="{% url 'news:login' %}">登录</a></li>
+                <li><a href="http://18.18.96.6/user/articlegrid2.aspx" target="_blank">后台</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <h1 class="page-header">欢迎使用自动发新闻系统</h1>
+              <div class="col-xs-12 col-sm-12 placeholder">
+                 <div id="mainContent">
+                    <li>如果是老鸟，请点击<a href="{% url 'news:login' %}"><strong>登录！</strong></a></li>
+                    <li>如果是菜鸟，请看下面的<strong>使用说明！</strong></a></li>
+                    <hr>
+                    <p>该系统为自动发新闻系统，只要上传相应的<strong>照片和文字</strong>即可自动上传到主页后台，审核通过即可在前台查阅。为了达到更好的使用体验，推荐使用Chrome浏览器或其他浏览器的高速模式（别用兼容IE模式就对了），如果有排版或加载慢等问题那一般就是IE浏览器的锅。</p>
+                    <ol><strong>一、登录系统：</strong></ol>
+                    <ol>点击登录，使用账号和密码登录系统</ol>
+                    <ol><strong>注意</strong>：如果提示用户密码或验证码错误，则可按Ctrl+F5强制刷新验证码，还错的话则真的是你记错用户名或密码了！</ol>
+                    <ol><strong>二、上传数据：</strong></ol>
+                    <ol>最上面图片大小的设置一般不需要修改，上传的图片大小要与设置的参数相对应；</ol>
+                    <ol>所属栏目、文章撰稿、图像摄影、审核人根据实际情况填写；</ol>
+                    <ol><strong>上传的zip压缩文件</strong>为图片的压缩包，图片名称为0.jpg、1.jpg、2.jpg...（一般0.jpg表示第一张大图，没有大图直接从1.jpg开始，）以此类推，图片分辨率与上面设置对应，并将其压缩为zip格式上传。</ol>
+                    <ol><strong>注意</strong>：不能为rar格式！压缩包内直接为图片文件，不能再有文件夹！</ol>
+                    <ol>打开新闻稿的word文档，Ctrl+A全选文档内容，Ctrl+C复制文档内容，Ctrl+V粘贴到网页的文本框中。（图片不会被粘贴进来）；</ol>
+                    <ol>并按如下操作：</ol>
+                    <ol>1、如果有大图，在大图的位置输入对应图片的数字,如：”0/ “    </ol>
+                    <ol>2、在普通图片出现的地方输入： “  // ”   </ol>
+                    <ol>3、在图片文字的前面添加对应图片的数字，如: “1/xxxx”</ol>
+                    <ol>4、在普通图片结束的地方输入： “  ##”   </ol>
+                    <ol>最终效果如下图所示：</ol>
+                    <textarea cols="80" rows="18" class="form-control">xxxxxxxxx
+ 0/
+    xxxxxxxxxxxxxxxxxxxxxxxxxxxx
+     //
+    1/xxxxx                2/xxxx
+
+  3/xxxx             4/xxxxxx
+
+   5/xxxxx             6/xxxxx
+
+      7/xxxxx                       8/xxxxxx
+##</textarea>
+                    <ol>全部都填写完成后点击提交，下面是见证奇迹的时候！</ol>
+                    <ol><strong>三、查看效果：</strong></ol>
+                    <ol>没有错误提示的话可直接到后台预览效果；</ol>
+                    <ol>如果需要继续发新闻则需要重新登录一遍，再按上述说明操作即可；</ol>
+                    <ol>如果预览格式错误则可能是没有遵照系统规定，微小的调整可以到主页后台进行修改；</ol>
+                    <ol><a href="http://18.18.96.6/shownews.aspx?id=16889" target="_blank">示例新闻效果</a></ol>
+                    <hr>
+                    <p>PS:有bug或建议可电话反馈，但不一定有时间改...就这么多！</p>
+
+
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% include "news/foot.html" %}
+    </body>
+</html>

@@ -1,0 +1,102 @@
+<html>
+    <head>
+        {% include "news/head.html" %}
+        <title>新闻系统-上传页面</title>
+    </head>
+    <body>
+        {% include "news/nav.html" %}
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+              <ul class="nav nav-sidebar">
+                <li><a href="{% url 'news:index' %}">首页</a></li>
+                <li class="active"><a href="{% url 'news:login' %}">登录<span class="sr-only">(current)</span></a></li>
+                <li><a href="http://18.18.96.6/user/articlegrid2.aspx" target="_blank">后台</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <h1 class="page-header">新闻内容</h1>
+              <div class="col-xs-12 col-sm-12 placeholder">
+                 <div id="mainContent">
+                    {% if errors %} 
+                        <p style="color:red;"><strong> {{ errors }} </strong></p> 
+                    {% endif %}
+                    <!--Note the form style! -->
+                    <form enctype="multipart/form-data" action="{% url 'news:upload' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row placeholders">
+                        <div class="form-group col-sm-3 col-md-3 placeholder">
+                            <label for="bigPicWidth">大图片宽</label>
+                            <input type="text" name="bigPicWidth" class="form-control" id="bigPicWidth" placeholder="大图片宽度" value="{{ bigPicWidth }}">
+                        </div>
+                        <div class="form-group col-sm-3 col-md-3 placeholder">
+                            <label for="bigPicHeight">大图片高</label>
+                            <input type="text" name="bigPicHeight" class="form-control" id="bigPicHeight" placeholder="大图片高度" value="{{ bigPicHeight }}">
+                        </div>
+                        <div class="form-group col-sm-3 col-md-3 placeholder">
+                            <label for="picWidth">图片宽</label>
+                            <input type="text" name="picWidth" class="form-control" id="picWidth" placeholder="图片宽度" value="{{ picWidth }}">
+                        </div>
+                        <div class="form-group col-sm-3 col-md-3 placeholder">
+                            <label for="picHeight">图片高</label>
+                            <input type="text" name="picHeight" class="form-control" id="picHeight" placeholder="图片高度" value="{{ picHeight }}">
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="col-sm-3 col-md-3 placehold">
+                        <label for="classID">所属栏目:</label>
+                        <select name="classID" class="form-control" id="classID">
+                        {% for column in match_result %}
+                            <option value="{{ column.0 }}">{{ column.1 }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3 placeholder">
+                        <label for="writer">文字撰稿:</label>
+                        <input name="writer" type="text" value="{{ writer }}" class="form-control" placeholder="文章撰稿人">
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3 placeholder">
+                        <label for="photor">图像摄影:</label>
+                        <input name="photor" type="text" value="{{ photor }}" class="form-control" placeholder="图像摄影人">
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3 placeholder">
+                        <label for="passer">审核人:</label>
+                        <input name="passer" type="text" value="{{ passer }}" class="form-control" placeholder="文章签发人">
+                    </div>
+                    <div class="form-group col-sm-3 col-md-3 placeholder">
+                        <label for="upload_file">上传zip文件:</label>
+                        <input name="upload_file" type="file" class="form-control">
+                    </div>
+                    <hr>
+                    <div class="form-group col-sm-12 col-md-12 placeholder">
+                        <textarea id="content" name="content" cols="100" rows="25" class="form-control"></textarea>
+                        <p>                
+                        <div class="col-xs-2 col-xs-offset-2 col-sm-2 col-md-2 placeholder">
+                            <button class="btn btn-success" type="submit" id="button">提交</button>
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 placeholder">
+                            <button class="btn btn-default" type="reset" id="button">重置</button>
+                        </div>
+                    </form>
+                </div> 
+              </div>
+            </div>
+          </div>
+        </div>
+        <script>
+        // Change the content with br to \r\n
+        var content_br = '{{ content_br|safe }}';
+        content_br = content_br.replace(/(<br>)/g, "\r\n");
+
+        var select_classID = '{{ classID }}';
+        
+        // add content to textarea
+        $("#content").val(content_br);
+
+        // select the classID
+        $("#classID").val(select_classID);
+
+        </script>
+        {% include "news/foot.html" %}
+    </body>
+</html>

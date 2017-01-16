@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+<html>
+    <head>
+        {% include "news/head.html" %}
+        <title>新闻系统-登录页面</title>
+    </head>
+    <body>
+        {% include "news/nav.html" %}
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+              <ul class="nav nav-sidebar">
+                <li><a href="{% url 'news:index' %}">首页</a></li>
+                <li class="active"><a href="{% url 'news:login' %}">登录<span class="sr-only">(current)</span></a></li>
+                <li><a href="http://18.18.96.6/user/articlegrid2.aspx" target="_blank">后台</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <h1 class="page-header">用户登录</h1>
+              <div class="col-xs-9 col-sm-9 placeholder">
+                 <div id="mainContent">
+                    {% if errors %} 
+                        <p style="color:red;"><strong> {{ errors }} </strong></p> 
+                    {% endif %}
+                    <form action="" method="post" class="form-horizontal">
+                    {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username" class="col-sm-2 control-label">账户：</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="username" class="form-control" id="username" placeholder="登录主页账号" value="{{ username }}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">密码：</label>
+                            <div class="col-sm-4">
+                                <input type="password" name="password" class="form-control" id="password" placeholder="登录主页密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="code" class="col-sm-2 control-label">验证码：</label>
+                            <div class="col-sm-4">
+                                <input type="text" name="code" class="form-control" id="code" placeholder="右方的验证码" value="{{ code }}">
+                            </div>
+                        <div>
+                            <img src="{% static 'news/code_img.jpg' %}"/>
+                        </div>
+                        <p>
+                        <div class="col-xs-2 col-xs-offset-2 col-sm-2 col-md-2 placeholder">
+                            <button class="btn btn-success" type="submit" id="button">提交</button> 
+                        </div>
+                        <div class="col-xs-2 col-sm-2 col-md-2 placeholder">
+                            <button class="btn btn-default" type="reset" id="button">重置</button> 
+                        </div>
+                    </form>
+                 </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% include "news/foot.html" %}
+    </body>
+</html>

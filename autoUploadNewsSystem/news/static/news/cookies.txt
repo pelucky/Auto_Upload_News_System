@@ -1,0 +1,6 @@
+# Netscape HTTP Cookie File
+# http://curl.haxx.se/rfc/cookie_spec.html
+# This is a generated file!  Do not edit.
+
+18.18.96.6	FALSE	/	FALSE		ASP.NET_SessionId	f13qrx25021c4v55qxf3bz55
+18.18.96.6	FALSE	/	FALSE		authcode	PFU3OmG3l73J56Csbb2TwRM8IfgLmNBbnEoS%2bxfPTL6GNZoeJhieMX1bXhfimKF1%2ffSqGFfD2BlgqlOuzQfaqAop4ac7ftQhWhCjQ1UNB8Fqu9Kons2JEFJrDd0MAvh0766jFPOzu%2fnO0uhEuuicrJL0lif7HBQCFx97oTwTIgW61KzdeuWuUT6I9V1hTzz6XqlJTY5vooDqfXy3Vua61BtanqVXtB%2b0lR3X56VKLnM%3d

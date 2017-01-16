@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        {% include "news/head.html" %}
+        <title>新闻系统-成功</title>
+    </head>
+    <body>
+        {% include "news/nav.html" %}
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-3 col-md-2 sidebar">
+              <ul class="nav nav-sidebar">
+                <li><a href="{% url 'news:index' %}">首页<span class="sr-only">(current)</span></a></li>
+                <li><a href="{% url 'news:login' %}">登录</a></li>
+                <li class="active"><a href="http://18.18.96.6/user/articlegrid2.aspx" target="_blank">后台<span class="sr-only">(current)</span></a></li>
+              </ul>
+            </div>
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+              <h1 class="page-header">新闻已经成功发布!</h1>
+              <div class="col-xs-6 col-sm-6 placeholder">
+                 <div id="mainContent">
+                    <li>点击<a href="http://18.18.96.6/User/articlegrid2.aspx" target="_blank">此处</a>查看刚发布新闻！不过要确保之前在主页已经登录过...</li>
+                    <li>否则请点击<a href="http://18.18.96.6/User/login.aspx" target="_blank">此处</a>登录主页</li>
+                    <li>或者，骚年<a href="{% url 'news:login' %}">再来一发？</a></li>
+                 </div>                                                                                                            
+              </div>
+            </div>
+          </div>
+        </div>
+        {% include "news/foot.html" %}
+    </body>
+</html>
